@@ -1,6 +1,6 @@
 {
   "name": "papillon-transport",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Zero-dependency public transport itinerary client (MOTIS / Transitous), built for Papillon.",
   "license": "MIT",
   "type": "commonjs",
@@ -48,7 +48,7 @@
     "check:publish": "publint",
     "knip": "knip",
     "changeset": "changeset",
-    "version": "changeset version && pnpm install --lockfile-only",
+    "bump": "changeset version && pnpm install --lockfile-only",
     "release": "pnpm build && changeset publish",
     "example": "tsx examples/node-plan.ts",
     "prepublishOnly": "pnpm check && pnpm typecheck && pnpm build"

@@ -39,7 +39,7 @@ jobs:
       - name: Open the version pull request or publish to npm
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51
         with:
-          version-script: pnpm run version
+          version-script: pnpm run bump
           publish-script: pnpm run release
           commit-message: 'chore: version packages'
           pr-title: 'chore: version packages'
