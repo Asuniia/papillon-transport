@@ -1,0 +1,68 @@
+{
+  "name": "papillon-transport",
+  "version": "0.0.0",
+  "description": "Zero-dependency public transport itinerary client (MOTIS / Transitous), built for Papillon.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "transit",
+    "public-transport",
+    "itinerary",
+    "motis",
+    "transitous",
+    "papillon",
+    "react-native"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc -p tsconfig.json",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "check:types": "attw --pack .",
+    "check:publish": "publint",
+    "knip": "knip",
+    "changeset": "changeset",
+    "version": "changeset version && pnpm install --lockfile-only",
+    "release": "pnpm build && changeset publish",
+    "example": "tsx examples/node-plan.ts",
+    "prepublishOnly": "pnpm check && pnpm typecheck && pnpm build"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@biomejs/biome": "2.5.14",
+    "@changesets/cli": "^3.0.3",
+    "@types/node": "^22.20.4",
+    "knip": "^6.38.0",
+    "publint": "^0.3.24",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3"
+  },
+  "packageManager": "pnpm@11.18.0"
+}
