@@ -1,6 +1,6 @@
 {
   "name": "papillon-transport",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zero-dependency public transport itinerary client (MOTIS / Transitous), built for Papillon.",
   "license": "MIT",
   "type": "commonjs",
