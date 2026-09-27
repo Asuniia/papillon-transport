@@ -20,6 +20,10 @@
     },
     "./package.json": "./package.json"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asuniia/papillon-transport.git"
+  },
   "files": [
     "dist",
     "CHANGELOG.md"
