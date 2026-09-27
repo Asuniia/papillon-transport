@@ -36,14 +36,6 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
       - run: pnpm check && pnpm typecheck && pnpm build
-      - name: Debug npm OIDC (temporary)
-        run: |
-          id_token=$(curl -fsS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=npm:registry.npmjs.org" | jq -r .value)
-          echo "::add-mask::$id_token"
-          node -e 'const c = JSON.parse(Buffer.from(process.argv[1].split(".")[1], "base64url").toString()); const { repository, repository_owner, workflow_ref, job_workflow_ref, ref, environment } = c; console.log({ repository, repository_owner, workflow_ref, job_workflow_ref, ref, environment });' "$id_token"
-          curl -sS -o response.json -w "HTTP %{http_code}\n" -X POST -H "Authorization: Bearer $id_token" -H "Content-Length: 0" https://registry.npmjs.org/-/npm/v1/oidc/token/exchange/package/papillon-transport
-          jq 'del(.token)' response.json
-          rm -f response.json
       - name: Open the version pull request or publish to npm
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51
         with:
